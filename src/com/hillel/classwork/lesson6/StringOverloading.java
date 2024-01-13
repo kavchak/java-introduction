@@ -6,18 +6,18 @@ import java.io.InputStreamReader;
 
 public class StringOverloading {
 
+    public static final BufferedReader READER = new BufferedReader(new InputStreamReader(System.in));
+
     public static void main(String[] args) throws IOException {
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-        String test = bufferedReader.readLine();
-        String test2 = bufferedReader.readLine();
+        String test = READER.readLine();
+        String test2 = READER.readLine();
 
         printConcatenation(test, test2);
         printConcatenation(test, "any text");
         printConcatenation("something", test);
         printConcatenation("1", "2");
-        printConcatenation(bufferedReader.readLine(), bufferedReader.readLine());
+        printConcatenation(READER.readLine(), READER.readLine());
 
         printConcatenation("test", 1);
     }
