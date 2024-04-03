@@ -6,7 +6,7 @@ public class Task2 {
 
     public static void main(String[] args) {
 
-        int[] array = {1, 2, 3, 4, 5};
+        int[] array = {1, 2, 2, 4, 3};
         int targetNumber = 5;
 
         int[] result = findSumPair(array, targetNumber);
@@ -19,9 +19,11 @@ public class Task2 {
     }
 
     private static int[] findSumPair(int[] array, int targetNumber) {
-        for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] + array[i + 1] == targetNumber) {
-                return new int[]{i, i + 1};
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] + array[j] == targetNumber) {
+                    return new int[]{i, j};
+                }
             }
         }
         return null;
