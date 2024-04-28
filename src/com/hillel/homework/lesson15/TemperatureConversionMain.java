@@ -50,15 +50,18 @@ public class TemperatureConversionMain {
     }
 
     private static void convertTemperature(TemperatureScale scale, double celsius) {
+        Converter converter = createConverter(scale);
+
+        double convertedTemperature = converter.convert(celsius);
+        System.out.println(celsius + " degrees CELSIUS is equal to " + convertedTemperature + " " + scale);
+    }
+
+    private static Converter createConverter(TemperatureScale scale) {
         switch (scale) {
             case KELVIN:
-                double celsiusToKelvinResult = new KelvinConverter().convert(celsius);
-                System.out.println(celsius + " degrees Celsius is equal to " + celsiusToKelvinResult + " Kelvin.");
-                break;
+                return new KelvinConverter();
             case FAHRENHEIT:
-                double celsiusToFahrenheitResult = new FahrenheitConverter().convert(celsius);
-                System.out.println(celsius + " degrees Celsius is equal to " + celsiusToFahrenheitResult + " Fahrenheit.");
-                break;
+                return new FahrenheitConverter();
             default:
                 throw new IllegalArgumentException("Unsupported temperature scale: " + scale);
         }
